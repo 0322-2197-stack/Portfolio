@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export default function SideNavBar() {
   const navItems = [
     { id: "hero", label: "Home" },
@@ -19,22 +17,21 @@ export default function SideNavBar() {
   };
 
   return (
-    <>
-      {/* Sidebar */}
-      <aside className="sticky top-0 z-40 h-screen w-64 bg-white/95 backdrop-blur-md border-r border-[#B7CAC5] lg:w-56">
-        <nav className="flex flex-col gap-2 overflow-y-auto p-8 lg:gap-1 lg:p-6">
-          <h2 className="mb-6 text-2xl font-black text-[#1F2937] lg:mb-8">Menu</h2>
+    <nav className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-[#B7CAC5] shadow-sm">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 overflow-x-auto px-5 py-4 sm:px-8 lg:gap-4 lg:px-10">
+        <h2 className="whitespace-nowrap text-lg font-black text-[#1F2937]">Menu</h2>
+        <div className="flex gap-1 lg:gap-2">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className="rounded-lg px-4 py-3 text-left text-sm font-semibold text-[#4B5563] transition-all duration-200 hover:bg-[#2A9D8F]/10 hover:text-[#1F6E64] active:bg-[#2A9D8F]/20 lg:text-xs"
+              className="whitespace-nowrap rounded-lg px-3 py-2 text-xs font-semibold text-[#4B5563] transition-all duration-200 hover:bg-[#2A9D8F]/10 hover:text-[#1F6E64] active:bg-[#2A9D8F]/20 lg:px-4 lg:py-2.5 lg:text-sm"
             >
               {item.label}
             </button>
           ))}
-        </nav>
-      </aside>
-    </>
+        </div>
+      </div>
+    </nav>
   );
 }
