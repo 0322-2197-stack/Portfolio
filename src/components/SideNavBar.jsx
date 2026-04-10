@@ -1,8 +1,6 @@
 import { useState } from "react";
 
 export default function SideNavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-
   const navItems = [
     { id: "hero", label: "Home" },
     { id: "about", label: "About" },
@@ -17,29 +15,13 @@ export default function SideNavBar() {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
     }
   };
 
   return (
     <>
-      {/* Mobile Menu Button */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-5 top-5 z-50 flex flex-col gap-1.5 rounded-lg bg-[#2A9D8F] p-2 text-white lg:hidden"
-        aria-label="Toggle navigation"
-      >
-        <span className={`h-0.5 w-6 bg-white transition-transform ${isOpen ? "translate-y-2 rotate-45" : ""}`} />
-        <span className={`h-0.5 w-6 bg-white transition-opacity ${isOpen ? "opacity-0" : ""}`} />
-        <span className={`h-0.5 w-6 bg-white transition-transform ${isOpen ? "-translate-y-2 -rotate-45" : ""}`} />
-      </button>
-
       {/* Sidebar */}
-      <aside
-        className={`fixed left-0 top-0 z-40 h-screen w-64 transform bg-white/95 backdrop-blur-md transition-transform duration-300 ease-in-out lg:sticky lg:top-0 lg:h-screen lg:w-56 lg:translate-x-0 lg:transform-none lg:border-r lg:border-[#B7CAC5] ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
+      <aside className="sticky top-0 z-40 h-screen w-64 bg-white/95 backdrop-blur-md border-r border-[#B7CAC5] lg:w-56">
         <nav className="flex flex-col gap-2 overflow-y-auto p-8 lg:gap-1 lg:p-6">
           <h2 className="mb-6 text-2xl font-black text-[#1F2937] lg:mb-8">Menu</h2>
           {navItems.map((item) => (
@@ -53,15 +35,6 @@ export default function SideNavBar() {
           ))}
         </nav>
       </aside>
-
-      {/* Mobile Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm lg:hidden"
-          onClick={() => setIsOpen(false)}
-          aria-hidden="true"
-        />
-      )}
     </>
   );
 }
