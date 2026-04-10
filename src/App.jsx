@@ -5,6 +5,7 @@ import EducationSection from "./components/EducationSection";
 import FeaturedProjectSection from "./components/FeaturedProjectSection";
 import HeroSection from "./components/HeroSection";
 import SkillsSection from "./components/SkillsSection";
+import SideNavBar from "./components/SideNavBar";
 import { portfolioData } from "./data/portfolioData";
 
 export default function App() {
@@ -13,26 +14,44 @@ export default function App() {
       <div className="pointer-events-none fixed inset-0 opacity-60 [background:radial-gradient(circle_at_12%_12%,rgba(42,157,143,0.11),transparent_36%),radial-gradient(circle_at_84%_14%,rgba(233,196,106,0.12),transparent_34%),radial-gradient(circle_at_45%_88%,rgba(231,111,81,0.1),transparent_32%)]" />
       <div className="pointer-events-none fixed inset-0 opacity-[0.06] [background-image:radial-gradient(#2a9d8f_0.55px,transparent_0.55px)] [background-size:20px_20px]" />
 
-      <main className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-5 py-7 sm:px-8 lg:px-10 lg:py-10">
-        <HeroSection
-          name={portfolioData.name}
-          headline={portfolioData.headline}
-          location={portfolioData.location}
-          cta={portfolioData.cta}
-        />
+      <div className="relative flex">
+        <SideNavBar />
+        
+        <main className="relative mx-auto w-full flex-1 flex-col gap-8 px-5 py-7 sm:px-8 lg:px-10 lg:py-10">
+          <section id="hero">
+            <HeroSection
+              name={portfolioData.name}
+              headline={portfolioData.headline}
+              location={portfolioData.location}
+              cta={portfolioData.cta}
+            />
+          </section>
 
-        <AboutSection text={portfolioData.about} />
+          <section id="about">
+            <AboutSection text={portfolioData.about} />
+          </section>
 
-        <FeaturedProjectSection project={portfolioData.featuredProject} />
+          <section id="featured-project">
+            <FeaturedProjectSection project={portfolioData.featuredProject} />
+          </section>
 
-        <SkillsSection technical={portfolioData.skills.technical} soft={portfolioData.skills.soft} />
+          <section id="skills">
+            <SkillsSection technical={portfolioData.skills.technical} soft={portfolioData.skills.soft} />
+          </section>
 
-        <EducationSection education={portfolioData.education} />
+          <section id="education">
+            <EducationSection education={portfolioData.education} />
+          </section>
 
-        <CertificationsSection certifications={portfolioData.certifications} />
+          <section id="certifications">
+            <CertificationsSection certifications={portfolioData.certifications} />
+          </section>
 
-        <ContactFooter contact={portfolioData.contact} />
-      </main>
+          <section id="contact">
+            <ContactFooter contact={portfolioData.contact} />
+          </section>
+        </main>
+      </div>
     </div>
   );
 }
